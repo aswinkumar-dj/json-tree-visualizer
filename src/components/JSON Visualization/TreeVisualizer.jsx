@@ -12,7 +12,7 @@ const TreeVisualizer = ({ jsonData }) => {
   nodes = applyLayout(nodes, edges);
 
   return (
-    <div className="w-[935px]  h-[500px] border rounded-lg">
+    <div className="w-[935px]  h-[500px] border bg-gray-900 rounded-lg">
       <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} fitView>
         <Controls />
         <Background />

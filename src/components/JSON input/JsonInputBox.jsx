@@ -17,7 +17,7 @@ const JsonInputBox = () => {
 
       setTimeout(() => {
         treeRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      }, 300);
     } catch (error) {
       alert("Invalid JSON. Please fix and try again.");
     }
