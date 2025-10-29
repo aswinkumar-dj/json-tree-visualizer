@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { sampleJson } from "./sampleJson";
+import TreeVisualizer from "../JSON Visualization/TreeVisualizer";
 
 const JsonInputBox = () => {
   const [jsonText, setJsonText] = useState("");
+  const [parsedJSON, setParsedJSON] = useState(null);
   const loadData = () => {
     setJsonText(JSON.stringify(sampleJson, null, 2));
   };
   const visualizeJson = () => {
-    console.log("Visualizing JSON:", jsonText);
+    try {
+      setParsedJSON(JSON.parse(jsonText));
+    } catch (error) {
+      alert("Invalid JSON. Please fix and try again.");
+    }
   };
   return (
     <div>
@@ -34,6 +40,11 @@ const JsonInputBox = () => {
           <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
         </button>
       </div>
+      {parsedJSON && (
+        <div className="mt-30 h-[650px] w-[650px]">
+          <TreeVisualizer jsonData={parsedJSON} />
+        </div>
+      )}
     </div>
   );
 };
