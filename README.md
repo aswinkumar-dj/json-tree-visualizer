@@ -29,3 +29,16 @@ An interactive web-based tool to visualize JSON data as a hierarchical tree stru
 ## 🚀 Live Demo
 https://json-tree-visualizer-liard.vercel.app/
 
+---
+
+## Get Started
+- Clone the repository
+- And In Terminal, npm run dev
+
+---
+
+## Screenshots
+
+![JSON Input Screenshot](.src/screenshots/input.png)
+
+![Tree Visualization Screenshot](.src/screenshots/tree.png)
