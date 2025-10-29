@@ -1,20 +1,28 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { sampleJson } from "./sampleJson";
 import TreeVisualizer from "../JSON Visualization/TreeVisualizer";
 
 const JsonInputBox = () => {
   const [jsonText, setJsonText] = useState("");
   const [parsedJSON, setParsedJSON] = useState(null);
+  const treeRef = useRef(null);
+
   const loadData = () => {
     setJsonText(JSON.stringify(sampleJson, null, 2));
   };
   const visualizeJson = () => {
     try {
-      setParsedJSON(JSON.parse(jsonText));
+      const parsed = JSON.parse(jsonText);
+      setParsedJSON(parsed);
+
+      setTimeout(() => {
+        treeRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     } catch (error) {
       alert("Invalid JSON. Please fix and try again.");
     }
   };
+
   return (
     <div>
       <textarea
@@ -39,9 +47,16 @@ const JsonInputBox = () => {
           Load Sample Data
           <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
         </button>
+        <button
+          className="bg-red-500 text-white text-xl px-6 py-3 rounded-xl font-semibold 
+               transition-all duration-300 hover:bg-red-600"
+          onClick={() => window.location.reload()}
+        >
+          Reset
+        </button>
       </div>
       {parsedJSON && (
-        <div className="mt-30 h-[650px] w-[650px]">
+        <div ref={treeRef} className="mt-30 h-[650px] w-[650px]">
           <TreeVisualizer jsonData={parsedJSON} />
         </div>
       )}
