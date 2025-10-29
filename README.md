@@ -39,6 +39,6 @@ https://json-tree-visualizer-liard.vercel.app/
 
 ## Screenshots
 
-![JSON Input Screenshot](.src/screenshots/input.png)
+![JSON Input Screenshot](./src/screenshots/input.png)
 
-![Tree Visualization Screenshot](.src/screenshots/tree.png)
+![Tree Visualization Screenshot](./src/screenshots/tree.png)
